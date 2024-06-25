@@ -1,15 +1,19 @@
-from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
+
 
 class TestStellarBurgers:
-        def test_transition_through_logo(self, logged_user):
-            logged_user.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/div').click()
-            time.sleep(3)
-            title = logged_user.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/h1').text
-            assert title == "Соберите бургер"
-            
-        def test_transition_through_constructor(self, logged_user):
-            logged_user.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/ul/li[1]/a/p').click()
-            time.sleep(3)
-            title = logged_user.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/h1').text
-            assert title == "Соберите бургер"
+    def test_transition_through_logo(self, driver, logged_user):
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.LOGO_STELLAR_BURGERS)))
+        driver.find_element(*Locators.LOGO_STELLAR_BURGERS).click()
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.CREATE_BURGER)))
+        title = driver.find_element(*Locators.CREATE_BURGER).text
+        assert title == "Соберите бургер"
+
+    def test_transition_through_constructor(self, driver, logged_user):
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.CONSTRUCTOR_BUTTON)))
+        driver.find_element(*Locators.CONSTRUCTOR_BUTTON).click()
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.CREATE_BURGER)))
+        title = driver.find_element(*Locators.CREATE_BURGER).text
+        assert title == "Соберите бургер"

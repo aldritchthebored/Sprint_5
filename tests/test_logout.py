@@ -1,8 +1,10 @@
-from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
 
 class TestStellarBurgers:
-        def test_logout_button(self, logged_user):
-            logged_user.find_element(By.XPATH, '//*[@id="root"]/div/main/div/nav/ul/li[3]/button').click()
-            time.sleep(3)
-            assert '/login' in logged_user.current_url
+        def test_logout_button(self, driver, logged_user):
+            WebDriverWait(driver, 7).until(EC.presence_of_element_located((Locators.LOGOUT_BUTTON)))
+            driver.find_element(*Locators.LOGOUT_BUTTON).click()
+            WebDriverWait(driver, 7).until(EC.presence_of_element_located((Locators.LOGIN_BUTTON)))
+            assert '/login' in driver.current_url

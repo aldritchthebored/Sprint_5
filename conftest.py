@@ -1,25 +1,28 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import constants
+from locators import Locators
+
 
 @pytest.fixture
 def driver():
-    browser = webdriver.Chrome() 
-    browser.get('https://stellarburgers.nomoreparties.site')
+    chrome_options = Options()
+    chrome_options.add_argument("--start-fullscreen")
+    browser = webdriver.Chrome(options=chrome_options)
+    browser = webdriver.Chrome()
+    browser.get(constants.MAIN_URL)
     yield browser
     browser.quit()
 
 @pytest.fixture
-def logged_user():
-    browser = webdriver.Chrome() 
-    browser.get('https://stellarburgers.nomoreparties.site/login')
-    time.sleep(3)
-    browser.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[1]/div/div/input').send_keys('elizavetavinogradova10562@yandex.ru')
-    browser.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[2]/div/div/input').send_keys('123456')
-    browser.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/button').click()
-    time.sleep(3)
-    browser.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/a/p').click()
-    time.sleep(3)
-    yield browser
-    browser.quit()
+def logged_user(driver):
+    driver.get(constants.LOGIN_PAGE)
+    WebDriverWait(driver, 3).until(EC.element_to_be_clickable((Locators.LOGIN_EMAIL_INPUT)))
+    driver.find_element(*Locators.LOGIN_EMAIL_INPUT).send_keys('elizavetavinogradova10562@yandex.ru')
+    driver.find_element(*Locators.LOGIN_PASSWORD_INPUT).send_keys('123456')
+    driver.find_element(*Locators.LOGIN_BUTTON).click()
+    WebDriverWait(driver, 3).until(EC.element_to_be_clickable((Locators.PERSONAL_ACCOUNT)))
+    driver.find_element(*Locators.PERSONAL_ACCOUNT).click()

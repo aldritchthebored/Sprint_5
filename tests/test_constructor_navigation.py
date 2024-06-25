@@ -1,26 +1,24 @@
-from selenium.webdriver.common.by import By
-import time
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
 
 class TestStellarBurgers:
     def test_button_bread(self, driver):
-        time.sleep(3)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/div[1]/div[2]/span').click()
-        time.sleep(3)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/div[1]/div[1]/span').click()
-        time.sleep(3)
-        highlight_button = driver.find_element(By.CSS_SELECTOR, '.tab_tab_type_current__2BEPc ')
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.SAUCE_BUTTON)))
+        driver.find_element(*Locators.SAUCE_BUTTON).click()
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.BULKI_BUTTON)))
+        driver.find_element(*Locators.BULKI_BUTTON).click()
+        highlight_button = driver.find_element(*Locators.BULKI_BUTTON)
         assert "tab_tab_type_current__2BEPc" in highlight_button.get_attribute('class')
     def test_button_sauces(self, driver):
-        time.sleep(3)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/div[1]/div[2]/span').click()
-        time.sleep(3)
-        highlight_button = driver.find_element(By.CSS_SELECTOR, '.tab_tab_type_current__2BEPc ')
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.SAUCE_BUTTON)))
+        driver.find_element(*Locators.SAUCE_BUTTON).click()
+        highlight_button = driver.find_element(*Locators.SAUCE_BUTTON)
         assert "tab_tab_type_current__2BEPc" in highlight_button.get_attribute('class')
-
     def test_button_filling(self, driver):
-        time.sleep(3)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/div[1]/div[3]/span').click()
-        time.sleep(3)
-        highlight_button = driver.find_element(By.CSS_SELECTOR, '.tab_tab_type_current__2BEPc ')
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.FILLING_BUTTON)))
+        driver.find_element(*Locators.FILLING_BUTTON).click()
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.FILLING_BUTTON)))
+        highlight_button = driver.find_element(*Locators.FILLING_BUTTON)
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((Locators.FILLING_BUTTON)))
         assert "tab_tab_type_current__2BEPc" in highlight_button.get_attribute('class')
