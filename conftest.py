@@ -26,3 +26,4 @@ def logged_user(driver):
     driver.find_element(*Locators.LOGIN_BUTTON).click()
     WebDriverWait(driver, 3).until(EC.element_to_be_clickable((Locators.PERSONAL_ACCOUNT)))
     driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
+    return driver

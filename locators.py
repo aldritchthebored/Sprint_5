@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 class Locators():
-    PERSONAL_ACCOUNT = (By.XPATH, '//a[@href="/account"]')# Кнопка "Личный Кабинет"
+    PERSONAL_ACCOUNT = (By.XPATH, '//p[text()="Личный Кабинет"]')# Кнопка "Личный Кабинет"
     LOGIN_IN_ACCOUNT = (By.XPATH, '//button[text()="Войти в аккаунт"]')# Кнопка "Войти в аккаунт"
     LOGIN_EMAIL_INPUT = (By.XPATH, '//input[@name]')# Инпут для логина на странице входа
     LOGIN_PASSWORD_INPUT = (By.XPATH, '//input[@type="password"]')# Инпут для пароля на странице входа
