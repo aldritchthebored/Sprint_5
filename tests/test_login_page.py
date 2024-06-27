@@ -7,7 +7,7 @@ class TestStellarBurgers:
     def test_login_personal_account_button(self, driver):
         WebDriverWait(driver, 7).until(EC.element_to_be_clickable(Locators.LOGIN_IN_ACCOUNT))
         driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
-        WebDriverWait(driver, 7).until(EC.visibility_of_element_located((Locators.LOGIN_BUTTON)))
+        WebDriverWait(driver, 7).until(EC.visibility_of_element_located(Locators.LOGIN_BUTTON))
         driver.find_element(*Locators.LOGIN_EMAIL_INPUT).send_keys('elizavetavinogradova10562@yandex.ru')
         driver.find_element(*Locators.LOGIN_PASSWORD_INPUT).send_keys('123456')
         driver.find_element(*Locators.LOGIN_BUTTON).click()
@@ -33,7 +33,7 @@ class TestStellarBurgers:
         driver.find_element(*Locators.REGISTRATION_BUTTON_ON_LOGIN_PAGE).click()
         WebDriverWait(driver, 7).until(EC.presence_of_element_located(Locators.LOGIN_BUTTON_ON_PAGES))
         driver.find_element(*Locators.LOGIN_BUTTON_ON_PAGES).click()
-        WebDriverWait(driver, 7).until(EC.visibility_of_element_located((Locators.LOGIN_BUTTON)))
+        WebDriverWait(driver, 7).until(EC.visibility_of_element_located(Locators.LOGIN_BUTTON))
         driver.find_element(*Locators.LOGIN_EMAIL_INPUT).send_keys('elizavetavinogradova10562@yandex.ru')
         driver.find_element(*Locators.LOGIN_PASSWORD_INPUT).send_keys('123456')
         driver.find_element(*Locators.LOGIN_BUTTON).click()

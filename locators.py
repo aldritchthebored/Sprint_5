@@ -13,11 +13,14 @@ class Locators():
     REGISTRATION_NAME_INPUT = (By.XPATH, '//fieldset[1]/div/div/input')# Поле для ввода имени
     REGISTRATION_EMAIL_INPUT = (By.XPATH, '//fieldset[2]/div/div/input')# Поле для ввода email
     REGISTRATION_PASSWORD_INPUT = (By.NAME, 'Пароль')# Поле для ввода пароля
-    REGISTRATION_BUTTON = (By.XPATH, '//form/button')# Кнопка "Зарегистрироваться"
-    ERROR_MESSAGE = (By.XPATH, '//fieldset[3]/div/p')# Некорректный пароль
-    BULKI_BUTTON = (By.XPATH, '//main/section[1]/div[1]/div[1]')# Кнопка "Булки"
-    SAUCE_BUTTON = (By.XPATH, '//main/section[1]/div[1]/div[2]')# Кнопка "Соус"
-    FILLING_BUTTON = (By.XPATH, '//main/section[1]/div[1]/div[3]')# Кнопка "Начинка"
+    REGISTRATION_BUTTON = (By.XPATH, '//button[text()="Зарегистрироваться"]')# Кнопка "Зарегистрироваться"
+    ERROR_MESSAGE = (By.XPATH, '//p[text()="Некорректный пароль"]')# Некорректный пароль
+    BULKI_BUTTON = (By.XPATH, '//span[text()="Булки"]')# Кнопка "Булки"
+    SAUCE_BUTTON = (By.XPATH, '//span[text()="Соусы"]')# Кнопка "Соусы"
+    FILLING_BUTTON = (By.XPATH, '//span[text()="Начинки"]')# Кнопка "Начинка"
+    BULKI_TEXT = (By.XPATH, '//h2[text()="Булки"]')# Текст "Булки"
+    SAUCE_TEXT = (By.XPATH, '//h2[text()="Соусы"]')# Текст "Соусы"
+    FILLING_TEXT = (By.XPATH, '//h2[text()="Начинки"]')# Текст "Начинка"
     LOGO_STELLAR_BURGERS = (By.XPATH, '//div/a[@href="/"]')# Лого сайта
     CONSTRUCTOR_BUTTON = (By.XPATH, '//li/a[@href="/"]')# Кнопка "Конструктор"
     CREATE_BURGER = (By.XPATH, '//h1')# Элемент "Соберите Бургер"
