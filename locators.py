@@ -6,7 +6,7 @@ class Locators():
     LOGIN_EMAIL_INPUT = (By.XPATH, '//input[@name]')# Инпут для логина на странице входа
     LOGIN_PASSWORD_INPUT = (By.XPATH, '//input[@type="password"]')# Инпут для пароля на странице входа
     LOGIN_BUTTON = (By.XPATH, '//button[contains(text(), "Войти")]')# Кнопка "Войти" на странице входа
-    LOGOUT_BUTTON = (By.XPATH, '//li/button')# Кнопка "Выйти" в Личном Кабинете
+    LOGOUT_BUTTON = (By.XPATH, '//button[text()="Выход"]')# Кнопка "Выйти" в Личном Кабинете
     REGISTRATION_BUTTON_ON_LOGIN_PAGE = (By.XPATH, '//a[contains(text(), "Зарегистрироваться")]')# Кнопка "Зарегистрироваться" на странице входа
     RESTORE_PASSWORD_BUTTON = (By.XPATH, '//a[contains(text(), "Восстановить пароль")]')# Кнопка "Восстановить пароль" на странице входа
     LOGIN_BUTTON_ON_PAGES = (By.XPATH, '//a[contains(text(), "Войти")]')# Кнопка "Войти" на странице регистрации
@@ -15,12 +15,9 @@ class Locators():
     REGISTRATION_PASSWORD_INPUT = (By.NAME, 'Пароль')# Поле для ввода пароля
     REGISTRATION_BUTTON = (By.XPATH, '//button[text()="Зарегистрироваться"]')# Кнопка "Зарегистрироваться"
     ERROR_MESSAGE = (By.XPATH, '//p[text()="Некорректный пароль"]')# Некорректный пароль
-    BULKI_BUTTON = (By.XPATH, '//span[text()="Булки"]')# Кнопка "Булки"
-    SAUCE_BUTTON = (By.XPATH, '//span[text()="Соусы"]')# Кнопка "Соусы"
-    FILLING_BUTTON = (By.XPATH, '//span[text()="Начинки"]')# Кнопка "Начинка"
-    BULKI_TEXT = (By.XPATH, '//h2[text()="Булки"]')# Текст "Булки"
-    SAUCE_TEXT = (By.XPATH, '//h2[text()="Соусы"]')# Текст "Соусы"
-    FILLING_TEXT = (By.XPATH, '//h2[text()="Начинки"]')# Текст "Начинка"
+    BULKI_BUTTON = (By.XPATH, '//span[text()="Булки"]/parent::*')# Кнопка "Булки"
+    SAUCE_BUTTON = (By.XPATH, '//span[text()="Соусы"]/parent::*')# Кнопка "Соусы"
+    FILLING_BUTTON = (By.XPATH, '//span[text()="Начинки"]/parent::*')# Кнопка "Начинка"
     LOGO_STELLAR_BURGERS = (By.XPATH, '//div/a[@href="/"]')# Лого сайта
     CONSTRUCTOR_BUTTON = (By.XPATH, '//li/a[@href="/"]')# Кнопка "Конструктор"
-    CREATE_BURGER = (By.XPATH, '//h1')# Элемент "Соберите Бургер"
+    CREATE_BURGER = (By.XPATH, '//h1[text()="Соберите бургер"]')# Элемент "Соберите Бургер"

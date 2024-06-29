@@ -1,8 +1,6 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators
-import time
 from faker import Faker
 
 
@@ -37,5 +35,4 @@ class TestStellarBurgers:
         driver.find_element(*Locators.REGISTRATION_PASSWORD_INPUT).send_keys('12345')
         WebDriverWait(driver, 3).until(EC.presence_of_element_located((Locators.REGISTRATION_BUTTON)))
         driver.find_element(*Locators.REGISTRATION_BUTTON).click()
-        error_message = driver.find_element(*Locators.ERROR_MESSAGE).text
-        assert error_message == 'Некорректный пароль'
+        assert WebDriverWait(driver, 17).until(EC.visibility_of_element_located(Locators.ERROR_MESSAGE))
