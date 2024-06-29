@@ -22,7 +22,7 @@ class TestStellarBurgers:
         driver.find_element(*Locators.LOGIN_EMAIL_INPUT).send_keys('elizavetavinogradova10562@yandex.ru')
         driver.find_element(*Locators.LOGIN_PASSWORD_INPUT).send_keys('123456')
         driver.find_element(*Locators.LOGIN_BUTTON).click()
-        WebDriverWait(driver, 7).until(EC.presence_of_element_located(Locators.PERSONAL_ACCOUNT))
+        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.PERSONAL_ACCOUNT))
         driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
         assert WebDriverWait(driver, 17).until(EC.visibility_of_element_located(Locators.LOGOUT_BUTTON))
 
